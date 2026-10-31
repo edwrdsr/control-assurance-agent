@@ -1,0 +1,9 @@
+{
+  "system": "example-finance-app",
+  "observed_at": "2026-10-31T12:00:00Z",
+  "state": {
+    "identity": {"admin_mfa": false, "privileged_accounts": 3},
+    "audit": {"central_logging": true},
+    "storage": {"encrypted": true}
+  }
+}

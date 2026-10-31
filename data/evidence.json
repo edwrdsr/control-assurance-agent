@@ -1,0 +1,4 @@
+{
+  "source": "fictional-backup-job-export",
+  "fields": {"backup": {"days_since_test": 12}}
+}

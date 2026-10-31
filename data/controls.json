@@ -1,0 +1,9 @@
+{
+  "controls": [
+    {"id": "MFA-001", "title": "Administrative MFA enforced", "field": "identity.admin_mfa", "operator": "eq", "expected": true, "severity": "critical"},
+    {"id": "LOG-001", "title": "Central logging enabled", "field": "audit.central_logging", "operator": "eq", "expected": true, "severity": "high"},
+    {"id": "ENC-001", "title": "Storage encryption enabled", "field": "storage.encrypted", "operator": "eq", "expected": true, "severity": "high"},
+    {"id": "PRIV-001", "title": "Maximum privileged accounts", "field": "identity.privileged_accounts", "operator": "lte", "expected": 2, "severity": "medium"},
+    {"id": "BKP-001", "title": "Backup test completed recently", "field": "backup.days_since_test", "operator": "lte", "expected": 30, "severity": "high"}
+  ]
+}

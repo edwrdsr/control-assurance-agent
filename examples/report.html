@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Control Assurance Agent: Sample Run</title>
+<style>body{background:#fff;color:#111;font:17px/1.55 Georgia,serif;max-width:780px;margin:40px auto;padding:0 20px}h1,h2,code,small{font-family:monospace}h1{font-size:29px}h2{margin-top:32px;font-size:21px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #aaa;text-align:left;padding:9px 8px 9px 0}small{color:#444}li{margin:8px 0}a{color:#111}@media(max-width:540px){table{display:block;overflow-x:auto}}</style></head><body>
+<p><a href="/work/control-assurance-agent/">&larr; technical note</a></p>
+<h1>Control Assurance Agent / example run</h1>
+<p><strong>System:</strong> example-finance-app (fictional). <strong>Mode:</strong> local read-only demonstration.</p>
+<p><strong>Results:</strong> PASS 3 / FAIL 2 / UNKNOWN 0 / ERROR 0</p>
+<p><small>Generated from synthetic fixtures. Not a real organization, assurance opinion, or NIST compliance assessment.</small></p>
+<h2>Control results</h2><table><thead><tr><th>ID</th><th>Result</th><th>Field</th><th>Observed</th><th>Evidence source</th></tr></thead><tbody><tr><td><code>MFA-001</code></td><td>FAIL</td><td>identity.admin_mfa</td><td>false</td><td>snapshot:example-finance-app</td></tr><tr><td><code>LOG-001</code></td><td>PASS</td><td>audit.central_logging</td><td>true</td><td>snapshot:example-finance-app</td></tr><tr><td><code>ENC-001</code></td><td>PASS</td><td>storage.encrypted</td><td>true</td><td>snapshot:example-finance-app</td></tr><tr><td><code>PRIV-001</code></td><td>FAIL</td><td>identity.privileged_accounts</td><td>3</td><td>snapshot:example-finance-app</td></tr><tr><td><code>BKP-001</code></td><td>PASS</td><td>backup.days_since_test</td><td>12</td><td>fixture-evidence:fictional-backup-job-export</td></tr></tbody></table>
+<h2>Standards version comparison</h2><p>Local, fictional OSCAL-style samples. Changes may be editorial and require human interpretation.</p><ul><li><code>AC-02</code>: MODIFIED. Mapped tests: MFA-001, PRIV-001. Human review required.</li><li><code>AU-12</code>: ADDED. Mapped tests: LOG-001. Human review required.</li></ul>
+<h2>Review queue (not executed)</h2><ul><li><code>MFA-001</code>: Investigate nonconforming state and validate with a control owner.</li><li><code>PRIV-001</code>: Investigate nonconforming state and validate with a control owner.</li><li><code>AC-02</code>: Review standards change and associated organizational tests: MFA-001, PRIV-001.</li><li><code>AU-12</code>: Review standards change and associated organizational tests: LOG-001.</li></ul>
+<h2>Tool-use trace</h2><ol><li>1: <code>evaluate_controls</code></li><li>2: <code>lookup_local_evidence</code></li><li>3: <code>evaluate_controls</code></li><li>4: <code>compare_catalog_versions</code></li></ol>
+<p><small>Each tool invocation in the JSON report also records input and output SHA-256 digests. No changes to system configuration were made.</small></p>
+</body></html>

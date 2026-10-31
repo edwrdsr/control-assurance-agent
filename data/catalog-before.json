@@ -1,0 +1,9 @@
+{
+  "catalog": {
+    "metadata": {"title": "Illustrative controls catalog v1 — NOT NIST text"},
+    "groups": [{"id": "example", "controls": [
+      {"id": "AC-02", "title": "Sample account access requirement", "parts": [{"name": "statement", "prose": "Document privileged accounts."}]},
+      {"id": "AU-02", "title": "Sample event logging requirement", "parts": [{"name": "statement", "prose": "Enable event logging."}]}
+    ]}]
+  }
+}

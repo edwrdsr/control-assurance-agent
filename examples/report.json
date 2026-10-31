@@ -1,0 +1,44 @@
+{
+  "kind": "bounded_offline_assurance_demo",
+  "generated_at": "2026-10-31T16:47:57.610232+00:00",
+  "system": "example-finance-app",
+  "inputs_sha256": {
+    "controls": "f084ec7ddf232f606d89ce7b8590c8cae4e3800fbe02ab33238f801deb3034f9",
+    "snapshot": "f74c98efa9c35d2191efbe9493b2558b6401b2b41c099b729602677e8fcd2be6",
+    "evidence": "20c8019fc4f75e9909e1f1f056dd1933f8d3e8e47863cc863e58b43d353da2a6",
+    "baseline_catalog": "7ea47bc1d5ba7609efd08430116014c096f395efa9df0f25ab94ee8b3b3a8c3b",
+    "updated_catalog": "b55268886d6b1fd1df0526e8a0da2550da2fc4448503c34c9a54b770d1cba6ba",
+    "mappings": "ce98612e6536096ec00a783431d5842c7127ccceeeeba36a059109b5a48f5e13"
+  },
+  "counts": {"PASS": 3, "FAIL": 2, "UNKNOWN": 0, "ERROR": 0},
+  "findings": [
+    {"id":"MFA-001","title":"Administrative MFA enforced","severity":"critical","status":"FAIL","field":"identity.admin_mfa","expected":true,"observed":false,"source":"snapshot:example-finance-app","explanation":"Observed state does not satisfy the specified check."},
+    {"id":"LOG-001","title":"Central logging enabled","severity":"high","status":"PASS","field":"audit.central_logging","expected":true,"observed":true,"source":"snapshot:example-finance-app","explanation":"Observed state satisfies the specified check."},
+    {"id":"ENC-001","title":"Storage encryption enabled","severity":"high","status":"PASS","field":"storage.encrypted","expected":true,"observed":true,"source":"snapshot:example-finance-app","explanation":"Observed state satisfies the specified check."},
+    {"id":"PRIV-001","title":"Maximum privileged accounts","severity":"medium","status":"FAIL","field":"identity.privileged_accounts","expected":2,"observed":3,"source":"snapshot:example-finance-app","explanation":"Observed state does not satisfy the specified check."},
+    {"id":"BKP-001","title":"Backup test completed recently","severity":"high","status":"PASS","field":"backup.days_since_test","expected":30,"observed":12,"source":"fixture-evidence:fictional-backup-job-export","explanation":"Observed state satisfies the specified check."}
+  ],
+  "investigations": [{"field":"backup.days_since_test","found":true}],
+  "standards_changes": [
+    {"control_id":"AC-02","change":"MODIFIED","before":{"id":"AC-02","title":"Sample account access requirement","parts":["{\"name\":\"statement\",\"prose\":\"Document privileged accounts.\"}"]},"after":{"id":"AC-02","title":"Sample account access requirement","parts":["{\"name\":\"statement\",\"prose\":\"Document privileged accounts and review privileges monthly.\"}"]},"mapped_tests":["MFA-001","PRIV-001"],"requires_human_review":true},
+    {"control_id":"AU-12","change":"ADDED","before":null,"after":{"id":"AU-12","title":"Sample central collection requirement","parts":["{\"name\":\"statement\",\"prose\":\"Forward logs to a central collector.\"}"]},"mapped_tests":["LOG-001"],"requires_human_review":true}
+  ],
+  "human_review_requests": [
+    {"control_id":"MFA-001","recommended_action":"Investigate nonconforming state and validate with a control owner."},
+    {"control_id":"PRIV-001","recommended_action":"Investigate nonconforming state and validate with a control owner."},
+    {"control_id":"AC-02","recommended_action":"Review standards change and associated organizational tests: MFA-001, PRIV-001."},
+    {"control_id":"AU-12","recommended_action":"Review standards change and associated organizational tests: LOG-001."}
+  ],
+  "trace": [
+    {"step":1,"tool":"evaluate_controls","inputs_sha256":"a599df1555f5fee5fd5dfa0d2e93e4bb5aad4c7599047e09a612ff00a04a8279","result_sha256":"f1d43c8ce9e459af5743d73eee79ac19ccd38aedc980f725bf6a79a6e35d10a5"},
+    {"step":2,"tool":"lookup_local_evidence","inputs_sha256":"3dfc5b8b2500ff2b8aeb7e476013d971ea58ce5f008e82fc675bc6133a2e71f7","result_sha256":"e78fda2f5b59c10827a47e95024b0636838da193f45488dbc61974243d57f3e4"},
+    {"step":3,"tool":"evaluate_controls","inputs_sha256":"644d3883d42097a5a3660cadad764318fb79cdaebea7f8a4cfec9697fc91409d","result_sha256":"d4b2b4b78575123113af2506d92bfefd1685fd2cbcc4062b470c8d2f0db3bcb0"},
+    {"step":4,"tool":"compare_catalog_versions","inputs_sha256":"2a7032230527d453bbc40cd65f1e335134365eb76b5a5b5b60367025f9e4d7fd","result_sha256":"b96f1486f2cdafb408266d52367b19f39533821807a53ae4894bece3d85bc3ff"}
+  ],
+  "constraints": [
+    "All input files are synthetic or locally supplied.",
+    "No external API calls, LLM calls, or remediation actions.",
+    "Catalog comparison is structural, not a legal or compliance conclusion.",
+    "Every suggested next step requires a human reviewer."
+  ]
+}
